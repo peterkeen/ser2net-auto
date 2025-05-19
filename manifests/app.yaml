@@ -14,8 +14,6 @@ spec:
       labels:
         app: ser2net
     spec:
-      nodeSelector:
-        keen.land/serials: "true"
       volumes:
         - name: devices
           hostPath:
