@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: ser2net
-  namespace: iot-system
   labels:
     app: ser2net
 spec:
@@ -18,11 +17,9 @@ spec:
         - name: devices
           hostPath:
             path: /dev
-      imagePullSecrets:
-        - name: ghcr.io
       containers:
         - name: ser2net
-          image: "ghcr.io/peterkeen/k8stuff/apps/ser2net-auto:latest"
+          image: "ghcr.io/peterkeen/ser2net-auto:main"
           securityContext:
             privileged: true
           volumeMounts:
