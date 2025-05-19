@@ -28,4 +28,4 @@ pod-security.kubernetes.io/warn=privileged
 
 The software in this repo is copyright (C) Pete Keen and licensed with the MIT license.
 
-The resulting image bundles software that is copyright (C) 2001-2020 Corey Minyard <minyard@acm.org> and licensed with GPL 2.0.
+The resulting image bundles software that is copyright (C) Corey Minyard <minyard@acm.org> and licensed with GPL 2.0.
