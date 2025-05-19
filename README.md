@@ -16,6 +16,13 @@ To add a new device type, create a file named `scripts/<vendor_id>:<product_id>.
 ## Deploying
 
 See the example Kubernetes manifest in `manifests/app.yaml`.
+Note that if you are deploying into a Kubernetes cluster with Pod Security Admission you'll need to add these annotations to the namespace where you deploy ser2net-auto:
+
+```
+pod-security.kubernetes.io/audit=privileged
+pod-security.kubernetes.io/enforce=privileged
+pod-security.kubernetes.io/warn=privileged
+```
 
 ## Licence
 
