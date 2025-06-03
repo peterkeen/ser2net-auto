@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # https://github.com/bugst/go-serial/blob/master/enumerator/usb_linux.go#L36
 
 set -e
 set -x
+
+limitDeviceType="${LIMIT_DEVICE_TYPE:-.}"
 
 # Find all of the TTYs available on the system with names we might be interested in
 ttys=$(ls /sys/class/tty | egrep '(ttyS|ttyHS|ttyUSB|ttyACM|ttyAMA|rfcomm|ttyO|ttymxc)[0-9]{1,3}')
@@ -34,6 +36,8 @@ for tty in $ttys; do
     snippetFile="$vendorId:$productId.yaml"
 
     if [ -f "$snippetFile" ]; then
-        sed "s/DEVNODE/\/dev\/$tty/" $snippetFile
+        if grep -q $limitDeviceType $snippetFile; then
+            sed "s/DEVNODE/\/dev\/$tty/" $snippetFile
+        fi
     fi
 done
